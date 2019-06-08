@@ -14,9 +14,9 @@ public class FaceDownDetector extends GestureDetector {
 
     private boolean isFacingDown;
 
-    public FaceDownDetector(FaceDownListener flipListener) {
+    public FaceDownDetector(FaceDownListener listener) {
         super(TYPE_ACCELEROMETER);
-        this.listener = flipListener;
+        this.listener = listener;
         this.isFacingDown = false;
     }
 
