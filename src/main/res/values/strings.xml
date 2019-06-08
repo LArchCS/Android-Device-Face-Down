@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">FaceDownDetector</string>
+    <string name="stop_sound">Stop Sound</string>
+    <string name="play_sound">Play Sound</string>
+</resources>
