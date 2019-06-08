@@ -13,19 +13,13 @@ import java.util.concurrent.TimeUnit;
 public class SoundPlayer {
 
     private final ScheduledExecutorService executor;
-    private final MediaPlayer mediaPlayer;
     private final Runnable task;
 
     @Nullable private ScheduledFuture<?> scheduledFuture;
 
     public SoundPlayer(Context context) {
         executor = Executors.newSingleThreadScheduledExecutor();
-        mediaPlayer = MediaPlayer.create(context, R.raw.simple_tone);
-        task = new Runnable() {
-            public void run() {
-                mediaPlayer.start();
-            }
-        };
+        task = MediaPlayer.create(context, R.raw.simple_tone)::start;
         scheduledFuture = null;
     }
 

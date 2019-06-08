@@ -21,15 +21,15 @@ public class FaceDownDetector extends GestureDetector {
     }
 
     @Override
-    void onSensorEvent(SensorEvent sensorEvent) {
-        if (!isFacingDown && isFacingDown(sensorEvent)) {
+    void onSensorEvent(SensorEvent event) {
+        if (!isFacingDown && isFacingDown(event)) {
             Log.d(Constant.TAG, "Detected face-down.");
             isFacingDown = true;
             listener.onFaceDown();
             return;
         }
 
-        if (isFacingDown && isTiltingUp(sensorEvent)) {
+        if (isFacingDown && isTiltingUp(event)) {
             Log.d(Constant.TAG, "Detected tilt-up.");
             isFacingDown = false;
             listener.onTiltUp();
@@ -41,12 +41,12 @@ public class FaceDownDetector extends GestureDetector {
         isFacingDown = false;
     }
 
-    private boolean isFacingDown(SensorEvent sensorEvent) {
-        return sensorEvent.values[2] < MAX_Z_ACCELERATION;
+    private boolean isFacingDown(SensorEvent event) {
+        return event.values[2] < MAX_Z_ACCELERATION;
     }
 
-    private boolean isTiltingUp(SensorEvent sensorEvent) {
-        return sensorEvent.values[2] > MIN_Z_ACCELERATION;
+    private boolean isTiltingUp(SensorEvent event) {
+        return event.values[2] > MIN_Z_ACCELERATION;
     }
 
     public interface FaceDownListener {

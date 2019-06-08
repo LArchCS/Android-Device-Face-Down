@@ -4,12 +4,10 @@ import android.content.Context;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.MenuItem;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -35,21 +33,18 @@ public class MainActivity extends AppCompatActivity {
         navigation = findViewById(R.id.navigation);
 
         BottomNavigationView.OnNavigationItemSelectedListener onClickListener =
-                new BottomNavigationView.OnNavigationItemSelectedListener() {
-                    @Override
-                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                        switch (item.getItemId()) {
-                            case R.id.play_sound:
-                                playSound();
-                                Log.d(Constant.TAG, "State changed to play_sound.");
-                                return true;
-                            case R.id.stop_sound:
-                                stopSound();
-                                Log.d(Constant.TAG, "State changed to stop_sound.");
-                                return true;
-                        }
-                        return false;
+                (item) -> {
+                    switch (item.getItemId()) {
+                        case R.id.play_sound:
+                            playSound();
+                            Log.d(Constant.TAG, "State changed to play_sound.");
+                            return true;
+                        case R.id.stop_sound:
+                            stopSound();
+                            Log.d(Constant.TAG, "State changed to stop_sound.");
+                            return true;
                     }
+                    return false;
                 };
 
         faceDownDetector = new FaceDownDetector(new FaceDownDetector.FaceDownListener() {

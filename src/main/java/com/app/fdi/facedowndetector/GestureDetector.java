@@ -13,14 +13,14 @@ abstract class GestureDetector implements SensorEventListener {
     }
 
     @Override
-    public void onSensorChanged(SensorEvent sensorEvent) {
-        if (sensorEvent.sensor.getType() == sensorType) {
-            onSensorEvent(sensorEvent);
+    public void onSensorChanged(SensorEvent event) {
+        if (event.sensor.getType() == sensorType) {
+            onSensorEvent(event);
         }
     }
 
     @Override
-    public void onAccuracyChanged(Sensor sensor, int i) {
+    public void onAccuracyChanged(Sensor sensor, int accuracy) {
         // no-op
     }
 
