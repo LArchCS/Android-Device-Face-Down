@@ -7,8 +7,8 @@ import static android.hardware.Sensor.TYPE_ACCELEROMETER;
 
 public class FaceDownDetector extends GestureDetector {
 
-    private static final float MIN_Z_ACCELERATION = 9;
-    private static final float MAX_Z_ACCELERATION = 6;
+    private static final float MAX_Z_ACCELERATION = 9;
+    private static final float MIN_Z_ACCELERATION = 6;
 
     private final FaceDownListener listener;
 
@@ -42,11 +42,11 @@ public class FaceDownDetector extends GestureDetector {
     }
 
     private boolean isFacingDown(SensorEvent sensorEvent) {
-        return sensorEvent.values[2] < -MIN_Z_ACCELERATION;
+        return sensorEvent.values[2] < -MAX_Z_ACCELERATION;
     }
 
     private boolean isTiltingUp(SensorEvent sensorEvent) {
-        return sensorEvent.values[2] > -MAX_Z_ACCELERATION;
+        return sensorEvent.values[2] > -MIN_Z_ACCELERATION;
     }
 
     public interface FaceDownListener {
